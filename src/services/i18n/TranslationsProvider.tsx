@@ -2,14 +2,14 @@
 
 import { I18nextProvider } from 'react-i18next';
 import { createInstance, Resource } from 'i18next';
-import initTranslations from './initTranslations';
 import { SiteLocale } from 'constants/i18n.constants';
+import initTranslations from './initTranslations';
 
 export default function TranslationsProvider({
   children,
   locale,
   namespaces,
-  resources
+  resources,
 }: Readonly<{
     children: React.ReactNode;
     locale: SiteLocale;

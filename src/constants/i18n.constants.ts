@@ -8,23 +8,22 @@ export enum SiteLocale {
 export const LocalesForSelection = [
   {
     code: SiteLocale.EN,
-    name: 'English'
+    name: 'English',
   },
   {
     code: SiteLocale.AR,
-    name: 'Arabic'
+    name: 'Arabic',
   },
   {
     code: SiteLocale.ZH,
-    name: 'Chinese'
+    name: 'Chinese',
   },
   {
     code: SiteLocale.RU,
-    name: 'Russian'
+    name: 'Russian',
   },
 ];
 
 export const DEFAULT_LOCALE = SiteLocale.EN;
 export const DEFAULT_DIRECTION = 'ltr';
-export const LOCALES = LocalesForSelection.map(locale => locale.code);
-
+export const LOCALES = LocalesForSelection.map((locale) => locale.code);
