@@ -9,6 +9,9 @@
     "module": "esnext",
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
+    "noImplicitOverride": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
@@ -18,7 +21,13 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"]
+      "config/*": ["./src/config/*"],
+      "constants/*": ["./src/constants/*"],
+      "hooks/*": ["./src/hooks/*"],
+      "icons/*": ["./src/components/icons/*"],
+      "services/*": ["./src/services/*"],
+      "utils/*": ["./src/utils/*"],
+      "@/*": ["./src/*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
