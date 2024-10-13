@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslation } from 'react-i18next';
-import LanguageSwitcher from './LanguageSwitcher';
+import LanguageSwitcher from '../@navigation/LanguageSwitcher/LanguageSwitcher';
 
 export default function ExampleClientComponent() {
   const { t } = useTranslation();

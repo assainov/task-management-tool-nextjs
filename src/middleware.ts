@@ -1,5 +1,5 @@
+import { i18nConfig } from 'constants/i18n.constants';
 import { i18nRouter } from 'next-i18n-router';
-import { i18nConfig } from 'config/i18n.config';
 import { NextRequest } from 'next/server';
 
 // The i18nRouter function will take the request,

@@ -1,8 +1,7 @@
 import { createInstance, i18n, Resource } from 'i18next';
 import { initReactI18next } from 'react-i18next/initReactI18next';
 import resourcesToBackend from 'i18next-resources-to-backend';
-import { i18nConfig } from 'config/i18n.config';
-import { SiteLocale } from 'constants/i18n.constants';
+import { i18nConfig, SiteLocale } from 'constants/i18n.constants';
 
 export default async function initTranslations(
   locale: SiteLocale,

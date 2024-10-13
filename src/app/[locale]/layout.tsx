@@ -1,10 +1,9 @@
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import '../globals.css';
-import { SiteLocale } from 'constants/i18n.constants';
-import { i18nConfig } from 'config/i18n.config';
+import { i18nConfig, SiteLocale } from 'constants/i18n.constants';
 import { dir } from 'i18next';
-import Header from '@/components/Header/Header';
+import { StoreProvider } from 'services/redux';
 
 const geistSans = localFont({
   src: '../fonts/GeistVF.woff',
@@ -36,13 +35,14 @@ export default async function RootLayout({
   // const { t } = await initTranslations(locale, ['common']);
 
   return (
-    <html lang={locale} dir={dir(locale)}>
-      <body
-        className={`${ geistSans.variable } ${ geistMono.variable } antialiased`}
-      >
-        <Header />
-        {children}
-      </body>
-    </html>
+    <StoreProvider>
+      <html lang={locale} dir={dir(locale)}>
+        <body
+          className={`${ geistSans.variable } ${ geistMono.variable } antialiased`}
+        >
+          {children}
+        </body>
+      </html>
+    </StoreProvider>
   );
 }

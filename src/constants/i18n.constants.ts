@@ -27,3 +27,8 @@ export const LocalesForSelection = [
 export const DEFAULT_LOCALE = SiteLocale.EN;
 export const DEFAULT_DIRECTION = 'ltr';
 export const LOCALES = LocalesForSelection.map((locale) => locale.code);
+
+export const i18nConfig = {
+  locales: LOCALES,
+  defaultLocale: DEFAULT_LOCALE,
+};

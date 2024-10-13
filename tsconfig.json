@@ -24,10 +24,10 @@
       "config/*": ["./src/config/*"],
       "constants/*": ["./src/constants/*"],
       "hooks/*": ["./src/hooks/*"],
-      "icons/*": ["./src/components/icons/*"],
+      "@icons/*": ["./src/components/@icons/*"],
       "services/*": ["./src/services/*"],
       "utils/*": ["./src/utils/*"],
-      "@/*": ["./src/*"],
+      "@/*": ["./src/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

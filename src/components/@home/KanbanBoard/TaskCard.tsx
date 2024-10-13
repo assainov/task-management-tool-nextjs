@@ -4,9 +4,9 @@ import { CSS } from '@dnd-kit/utilities';
 import { cva } from 'class-variance-authority';
 import { GripVertical } from 'lucide-react';
 import { ColumnId } from './KanbanBoard';
-import { Card, CardContent, CardHeader } from '../ui/Card';
-import { Badge } from '../ui/Badge';
-import { Button } from '../ui/Button';
+import { Card, CardContent, CardHeader } from '@/components/@common/Card';
+import { Button } from '@/components/@common/Button';
+import { Badge } from '@/components/@common/Badge';
 
 export interface Task {
   id: UniqueIdentifier;

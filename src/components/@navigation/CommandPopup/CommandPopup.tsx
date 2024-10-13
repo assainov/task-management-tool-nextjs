@@ -6,7 +6,7 @@ import {
 } from 'lucide-react';
 import {
   CommandDialog, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList, CommandSeparator, CommandShortcut,
-} from '../ui/Command';
+} from '@/components/@common/Command';
 
 function CommandPopup() {
   const [open, setOpen] = React.useState(false);

@@ -107,7 +107,8 @@ const initialTasks: Task[] = [
     content: 'Launch website and deploy to server',
   },
 ];
-export const KanbanBoard = () => {
+
+const KanbanBoard = () => {
   const [columns, setColumns] = useState<Column[]>(defaultCols);
   const pickedUpTaskColumn = useRef<ColumnId | null>(null);
   const columnsId = useMemo(() => columns.map((col) => col.id), [columns]);
@@ -368,3 +369,5 @@ export const KanbanBoard = () => {
     </DndContext>
   );
 };
+
+export default KanbanBoard;

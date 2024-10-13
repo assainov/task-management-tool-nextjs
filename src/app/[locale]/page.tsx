@@ -1,10 +1,8 @@
 import { SiteLocale } from 'constants/i18n.constants';
 import initTranslations from 'services/i18n/initTranslations';
 import TranslationsProvider from 'services/i18n/TranslationsProvider';
-import { KanbanBoard } from '@/components/KanbanBoard/KanbanBoard';
-import {
-  CardContent, CardDescription, CardHeader, CardTitle,
-} from '@/components/ui/Card';
+import Link from 'next/link';
+import { Button } from '@/components/@common/Button';
 
 const translationNamespaces = ['home', 'common'];
 
@@ -17,16 +15,10 @@ const Home = async ({ params: { locale } }: { params: { locale: SiteLocale } }) 
       locale={locale}
       resources={resources}
     >
-      <main>
-        <CardHeader>
-          <CardTitle>Task Management Tool</CardTitle>
-          <CardDescription>
-            Start by creating your own task.
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <KanbanBoard />
-        </CardContent>
+      <main className="flex items-center justify-center h-screen w-screen">
+        <Button asChild>
+          <Link href="/boards/default">Enter the app</Link>
+        </Button>
       </main>
     </TranslationsProvider>
   );

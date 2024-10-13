@@ -1,20 +1,20 @@
 import React from 'react';
-import UnicodeLogo from 'icons/Unicode.svg';
 import Link from 'next/link';
 import { Bell } from 'lucide-react';
-import { Input } from '../ui/Input';
+import UnicodeLogo from '@/components/@icons/Unicode.svg';
+import { Input } from '../../@common/Input';
 import {
   NavigationMenuLink,
-} from '../ui/NavigationMenu';
-import { cn } from '@/lib/utils';
-import { Avatar, AvatarFallback, AvatarImage } from '../ui/Avatar';
+} from '../../@common/NavigationMenu';
+import { cn } from '@/components/@common/lib/utils';
+import { Avatar, AvatarFallback, AvatarImage } from '../../@common/Avatar';
 import {
   DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger,
-} from '../ui/DropdownMenu';
-import CommandPopup from '../CommandPopup/CommandPopup';
-import { Button } from '../ui/Button';
+} from '../../@common/DropdownMenu';
+import { Button } from '../../@common/Button';
+import CommandPopup from '../CommandPopup';
 
-function Header() {
+function MainNavigation() {
   return (
     <header className="flex items-center gap-8 h-16 px-8 border-b">
       <div className="basis-[150px]">
@@ -121,4 +121,4 @@ const ListItem = React.forwardRef<
 ));
 ListItem.displayName = 'ListItem';
 
-export default Header;
+export default MainNavigation;

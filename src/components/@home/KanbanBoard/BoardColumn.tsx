@@ -3,8 +3,8 @@ import { useDndContext, type UniqueIdentifier } from '@dnd-kit/core';
 import { useMemo } from 'react';
 import { cva } from 'class-variance-authority';
 import { Task, TaskCard } from './TaskCard';
-import { Card, CardContent, CardHeader } from '../ui/Card';
-import { ScrollArea, ScrollBar } from '../ui/ScrollArea';
+import { Card, CardContent, CardHeader } from '@/components/@common/Card';
+import { ScrollArea, ScrollBar } from '@/components/@common/ScrollArea';
 
 export interface Column {
   id: UniqueIdentifier;
