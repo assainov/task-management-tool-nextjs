@@ -18,8 +18,9 @@ import {
   MouseSensor,
 } from '@dnd-kit/core';
 import { arrayMove } from '@dnd-kit/sortable';
-import { BoardColumn, BoardContainer, Column } from './BoardColumn';
-import { Task, TaskCard } from './TaskCard';
+import { BoardColumn, BoardContainer } from './BoardColumn';
+import { type Task, TaskCard } from './TaskCard';
+import type { Column } from './BoardColumn';
 import { coordinateGetter } from './multipleContainersKeyboardPreset';
 import { hasDraggableData } from './KanbanBoard.utils';
 
@@ -107,7 +108,6 @@ const initialTasks: Task[] = [
     content: 'Launch website and deploy to server',
   },
 ];
-
 const KanbanBoard = () => {
   const [columns, setColumns] = useState<Column[]>(defaultCols);
   const pickedUpTaskColumn = useRef<ColumnId | null>(null);
@@ -340,7 +340,6 @@ const KanbanBoard = () => {
       onDragOver={onDragOver}
     >
       <BoardContainer>
-        {/* <SortableContext items={columnsId}> */}
         {columns.map((col) => (
           <BoardColumn
             key={col.id}
@@ -348,7 +347,6 @@ const KanbanBoard = () => {
             tasks={tasks.filter((task) => task.columnId === col.id)}
           />
         ))}
-        {/* </SortableContext> */}
       </BoardContainer>
 
       {typeof window !== 'undefined' && 'document' in window

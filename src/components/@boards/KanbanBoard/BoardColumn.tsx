@@ -1,4 +1,4 @@
-import { SortableContext } from '@dnd-kit/sortable';
+import { SortableContext, useSortable } from '@dnd-kit/sortable';
 import { useDndContext, type UniqueIdentifier } from '@dnd-kit/core';
 import { useMemo } from 'react';
 import { cva } from 'class-variance-authority';
@@ -26,15 +26,26 @@ interface BoardColumnProps {
 export function BoardColumn({ column, tasks }: BoardColumnProps) {
   const tasksIds = useMemo(() => tasks.map((task) => task.id), [tasks]);
 
+  const {
+    setNodeRef,
+  } = useSortable({
+    id: column.id,
+    data: {
+      type: 'Column',
+      column,
+    } satisfies ColumnDragData,
+    attributes: {
+      roleDescription: `Column: ${ column.title }`,
+    },
+  });
+
   return (
     <Card
-      className="h-[640px] max-h-[640px] w-[350px] max-w-full bg-primary-foreground flex flex-col flex-shrink-0 snap-center"
+      ref={setNodeRef}
+      className="h-[640px] max-h-[640px] w-[350px] max-w-full bg-primary-foreground flex flex-col flex-shrink-0 snap-center rounded-sm"
     >
       <CardHeader className="p-4 font-semibold border-b-2 text-left flex flex-row space-between items-center">
-        <span className="ml-auto">
-          {' '}
-          {column.title}
-        </span>
+        {column.title}
       </CardHeader>
       <ScrollArea>
         <CardContent className="flex flex-grow flex-col gap-2 p-2">
@@ -67,7 +78,7 @@ export function BoardContainer({ children }: { children: React.ReactNode }) {
         dragging: dndContext.active ? 'active' : 'default',
       })}
     >
-      <div className="flex gap-4 items-center flex-row">
+      <div className="flex gap-4 items-center flex-row ">
         {children}
       </div>
       <ScrollBar orientation="horizontal" />

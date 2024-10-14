@@ -50,7 +50,7 @@ export function TaskCard({ task, isOverlay = false }: TaskCardProps) {
     transform: CSS.Translate.toString(transform),
   };
 
-  const variants = cva('', {
+  const variants = cva('rounded-sm hover:bg-gray-50', {
     variants: {
       dragging: {
         over: 'ring-2 opacity-30',
@@ -68,12 +68,12 @@ export function TaskCard({ task, isOverlay = false }: TaskCardProps) {
       className={variants({
         dragging: isOverlay ? 'overlay' : draggingStyle,
       })}
+      {...attributes}
+      {...listeners}
     >
-      <CardHeader className="px-3 py-3 space-between flex flex-row border-b-2 border-secondary relative">
+      <CardHeader className="px-3 py-3 space-between flex flex-row border-secondary relative">
         <Button
           variant="ghost"
-          {...attributes}
-          {...listeners}
           className="p-1 text-secondary-foreground/50 -ml-2 h-auto cursor-grab"
         >
           <span className="sr-only">Move task</span>
