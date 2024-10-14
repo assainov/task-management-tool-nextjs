@@ -1,5 +1,4 @@
-import { i18nConfig } from 'config/i18n.config';
-import { LocalesForSelection } from 'constants/i18n.constants';
+import { i18nConfig, LocalesForSelection } from 'constants/i18n.constants';
 import { setCookie } from 'cookies-next';
 import { usePathname, useRouter } from 'next/navigation';
 import React, { ChangeEventHandler } from 'react';
