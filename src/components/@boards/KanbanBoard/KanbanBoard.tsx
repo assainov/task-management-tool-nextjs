@@ -215,18 +215,18 @@ const KanbanBoard = () => {
     if (!hasDraggableData(event.active)) return;
     const data = event.active.data.current;
     if (data?.type === 'Column') {
-      setActiveColumn(data.column);
+      setTimeout(() => setActiveColumn(data.column), 0);
       return;
     }
 
     if (data?.type === 'Task') {
-      setActiveTask(data.task);
+      setTimeout(() => setActiveTask(data.task), 0);
     }
   }
 
   function onDragEnd(event: DragEndEvent) {
-    setActiveColumn(null);
-    setActiveTask(null);
+    setTimeout(() => setActiveColumn(null), 0);
+    setTimeout(() => setActiveTask(null), 0);
 
     const { active, over } = event;
     if (!over) return;
@@ -273,7 +273,7 @@ const KanbanBoard = () => {
 
     // Im dropping a Task over another Task
     if (isActiveATask && isOverATask) {
-      setTasks((tasks) => {
+      setTimeout(() => setTasks((tasks) => {
         const activeIndex = tasks.findIndex((t) => t.id === activeId);
         const overIndex = tasks.findIndex((t) => t.id === overId);
         const activeTask = tasks[activeIndex];
@@ -288,14 +288,14 @@ const KanbanBoard = () => {
         }
 
         return arrayMove(tasks, activeIndex, overIndex);
-      });
+      }), 0);
     }
 
     const isOverAColumn = overData?.type === 'Column';
 
     // Im dropping a Task over a column
     if (isActiveATask && isOverAColumn) {
-      setTasks((tasks) => {
+      setTimeout(() => setTasks((tasks) => {
         const activeIndex = tasks.findIndex((t) => t.id === activeId);
         const activeTask = tasks[activeIndex];
         if (activeTask) {
@@ -303,7 +303,7 @@ const KanbanBoard = () => {
           return arrayMove(tasks, activeIndex, activeIndex);
         }
         return tasks;
-      });
+      }), 0);
     }
   }
 
