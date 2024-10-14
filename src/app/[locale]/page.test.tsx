@@ -9,7 +9,7 @@ import Page from './page';
 describe('Pages', () => {
   describe('Home Page', () => {
     it('renders a link in English', async () => {
-      const PageResolved = await resolveComponent(Page, { params: { locale: SiteLocale.EN } });
+      const PageResolved = await resolveComponent(Page, { params: { locale: SiteLocale.En } });
 
       render(<PageResolved />);
 
