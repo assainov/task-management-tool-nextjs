@@ -2,10 +2,13 @@ import type { UniqueIdentifier } from '@dnd-kit/core';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import { cva } from 'class-variance-authority';
-import { GripVertical } from 'lucide-react';
+import { Ellipsis } from 'lucide-react';
 import { Card, CardContent, CardHeader } from 'components/@common/Card';
 import { Button } from 'components/@common/Button';
-import { Badge } from 'components/@common/Badge';
+import { Avatar, AvatarFallback, AvatarImage } from 'components/@common/Avatar';
+import {
+  DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger,
+} from 'components/@common/DropdownMenu';
 import { ColumnId } from './KanbanBoard';
 
 export interface Task {
@@ -71,20 +74,28 @@ export function TaskCard({ task, isOverlay = false }: TaskCardProps) {
       {...attributes}
       {...listeners}
     >
-      <CardHeader className="px-3 py-3 space-between flex flex-row border-secondary relative">
-        <Button
-          variant="ghost"
-          className="p-1 text-secondary-foreground/50 -ml-2 h-auto cursor-grab"
-        >
-          <span className="sr-only">Move task</span>
-          <GripVertical />
-        </Button>
-        <Badge variant="outline" className="ml-auto font-semibold">
-          Task
-        </Badge>
-      </CardHeader>
-      <CardContent className="px-3 pt-3 pb-6 text-left whitespace-pre-wrap">
+      <CardHeader className="px-3 py-3 space-between flex flex-row items-start border-secondary relative whitespace-pre-wrap">
         {task.content}
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button
+              variant="ghost"
+              className="p-1 text-secondary-foreground/50 h-auto cursor-grab ml-auto"
+            >
+              <span className="sr-only">Move task</span>
+              <Ellipsis />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            <DropdownMenuItem>Delete</DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      </CardHeader>
+      <CardContent className="px-3 pt-3 pb-6 flex justify-end">
+        <Avatar className="h-6 w-6 select-none">
+          <AvatarImage src="https://github.com/shadcn.png" />
+          <AvatarFallback>CN</AvatarFallback>
+        </Avatar>
       </CardContent>
     </Card>
   );

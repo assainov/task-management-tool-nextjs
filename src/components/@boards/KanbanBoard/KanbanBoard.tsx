@@ -18,6 +18,9 @@ import {
   MouseSensor,
 } from '@dnd-kit/core';
 import { arrayMove } from '@dnd-kit/sortable';
+import {
+  Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger,
+} from 'components/@common/Dialog';
 import { BoardColumn, BoardContainer } from './BoardColumn';
 import { type Task, TaskCard } from './TaskCard';
 import type { Column } from './BoardColumn';
@@ -53,23 +56,13 @@ const initialTasks: Task[] = [
     content: 'Gather requirements from stakeholders',
   },
   {
-    id: 'task3',
-    columnId: 'done',
-    content: 'Create wireframes and mockups',
-  },
-  {
-    id: 'task4',
-    columnId: 'in-progress',
-    content: 'Develop homepage layout',
-  },
-  {
     id: 'task5',
     columnId: 'in-progress',
     content: 'Design color scheme and typography',
   },
   {
     id: 'task6',
-    columnId: 'todo',
+    columnId: 'in-progress',
     content: 'Implement user authentication',
   },
   {
@@ -91,21 +84,6 @@ const initialTasks: Task[] = [
     id: 'task10',
     columnId: 'todo',
     content: 'Optimize website for mobile devices',
-  },
-  {
-    id: 'task11',
-    columnId: 'todo',
-    content: 'Integrate payment gateway',
-  },
-  {
-    id: 'task12',
-    columnId: 'todo',
-    content: 'Perform testing and bug fixing',
-  },
-  {
-    id: 'task13',
-    columnId: 'todo',
-    content: 'Launch website and deploy to server',
   },
 ];
 const KanbanBoard = () => {
@@ -330,41 +308,55 @@ const KanbanBoard = () => {
   }
 
   return (
-    <DndContext
-      accessibility={{
-        announcements,
-      }}
-      sensors={sensors}
-      onDragStart={onDragStart}
-      onDragEnd={onDragEnd}
-      onDragOver={onDragOver}
-    >
-      <BoardContainer>
-        {columns.map((col) => (
-          <BoardColumn
-            key={col.id}
-            column={col}
-            tasks={tasks.filter((task) => task.columnId === col.id)}
-          />
-        ))}
-      </BoardContainer>
+    <>
+      <DndContext
+        accessibility={{
+          announcements,
+        }}
+        sensors={sensors}
+        onDragStart={onDragStart}
+        onDragEnd={onDragEnd}
+        onDragOver={onDragOver}
+      >
+        <BoardContainer>
+          {columns.map((col) => (
+            <BoardColumn
+              key={col.id}
+              column={col}
+              tasks={tasks.filter((task) => task.columnId === col.id)}
+            />
+          ))}
+        </BoardContainer>
 
-      {typeof window !== 'undefined' && 'document' in window
-        && createPortal(
-          <DragOverlay>
-            {activeColumn && (
-              <BoardColumn
-                column={activeColumn}
-                tasks={tasks.filter(
-                  (task) => task.columnId === activeColumn.id,
-                )}
-              />
-            )}
-            {activeTask && <TaskCard task={activeTask} isOverlay />}
-          </DragOverlay>,
-          document.body,
-        )}
-    </DndContext>
+        {typeof window !== 'undefined' && 'document' in window
+          && createPortal(
+            <DragOverlay>
+              {activeColumn && (
+                <BoardColumn
+                  column={activeColumn}
+                  tasks={tasks.filter(
+                    (task) => task.columnId === activeColumn.id,
+                  )}
+                />
+              )}
+              {activeTask && <TaskCard task={activeTask} isOverlay />}
+            </DragOverlay>,
+            document.body,
+          )}
+      </DndContext>
+      <Dialog>
+        <DialogTrigger>Open</DialogTrigger>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Are you absolutely sure?</DialogTitle>
+            <DialogDescription>
+              This action cannot be undone. This will permanently delete your account
+              and remove your data from our servers.
+            </DialogDescription>
+          </DialogHeader>
+        </DialogContent>
+      </Dialog>
+    </>
   );
 };
 
