@@ -1,9 +1,9 @@
 import React from 'react';
 import {
   CardContent, CardDescription, CardHeader, CardTitle,
-} from '@/components/@common/Card';
-import KanbanBoard from '@/components/@home/KanbanBoard';
-import MainNavigation from '@/components/@navigation/MainNavigation';
+} from 'components/@common/Card';
+import KanbanBoard from 'components/@home/KanbanBoard';
+import MainNavigation from 'components/@navigation/MainNavigation';
 
 const DefaultBoardPage = () => (
   <>

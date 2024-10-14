@@ -3,10 +3,10 @@ import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import { cva } from 'class-variance-authority';
 import { GripVertical } from 'lucide-react';
+import { Card, CardContent, CardHeader } from 'components/@common/Card';
+import { Button } from 'components/@common/Button';
+import { Badge } from 'components/@common/Badge';
 import { ColumnId } from './KanbanBoard';
-import { Card, CardContent, CardHeader } from '@/components/@common/Card';
-import { Button } from '@/components/@common/Button';
-import { Badge } from '@/components/@common/Badge';
 
 export interface Task {
   id: UniqueIdentifier;

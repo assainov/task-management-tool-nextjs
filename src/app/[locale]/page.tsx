@@ -2,7 +2,7 @@ import { SiteLocale } from 'constants/i18n.constants';
 import initTranslations from 'services/i18n/initTranslations';
 import TranslationsProvider from 'services/i18n/TranslationsProvider';
 import Link from 'next/link';
-import { Button } from '@/components/@common/Button';
+import { Button } from 'components/@common/Button';
 
 const translationNamespaces = ['home', 'common'];
 
