@@ -7,7 +7,7 @@ import { Button } from 'components/@common/Button';
 const translationNamespaces = ['home', 'common'];
 
 const Home = async ({ params: { locale } }: { params: { locale: SiteLocale } }) => {
-  const { resources } = await initTranslations(locale, translationNamespaces);
+  const { t, resources } = await initTranslations(locale, translationNamespaces);
 
   return (
     <TranslationsProvider
@@ -17,7 +17,7 @@ const Home = async ({ params: { locale } }: { params: { locale: SiteLocale } }) 
     >
       <main className="flex items-center justify-center h-screen w-screen">
         <Button asChild>
-          <Link href="/boards/default">Enter the app</Link>
+          <Link href="/boards/default">{t('enter_app')}</Link>
         </Button>
       </main>
     </TranslationsProvider>

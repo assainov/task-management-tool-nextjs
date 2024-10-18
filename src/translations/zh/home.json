@@ -1,1 +1,5 @@
-{"greeting":"欢迎访问我们的网站！","to_about":"关于我们"}
+{
+  "enter_app": "进入应用程序",
+  "greeting": "欢迎访问我们的网站！",
+  "to_about": "关于我们"
+}

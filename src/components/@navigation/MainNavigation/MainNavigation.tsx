@@ -13,6 +13,7 @@ import {
 } from '../../@common/DropdownMenu';
 import { Button } from '../../@common/Button';
 import CommandPopup from '../CommandPopup';
+import LanguageSwitcher from '../LanguageSwitcher';
 
 const MainNavigation = () => (
   <header className="flex items-center gap-8 h-16 px-8 border-b">
@@ -68,6 +69,7 @@ const MainNavigation = () => (
         <Bell className="h-4 w-4" />
         <span className="sr-only">Toggle notifications</span>
       </Button>
+      <LanguageSwitcher />
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="secondary" size="icon" className="rounded-full relative group">

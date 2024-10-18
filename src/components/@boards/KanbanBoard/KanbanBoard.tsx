@@ -29,16 +29,16 @@ import { hasDraggableData } from './KanbanBoard.utils';
 
 const defaultCols = [
   {
-    id: 'todo' as const,
-    title: 'Todo',
+    id: 'new' as const,
+    title: 'new',
   },
   {
     id: 'in-progress' as const,
-    title: 'In progress',
+    title: 'in_progress',
   },
   {
     id: 'done' as const,
-    title: 'Done',
+    title: 'done',
   },
 ] satisfies Column[];
 
@@ -67,22 +67,22 @@ const initialTasks: Task[] = [
   },
   {
     id: 'task7',
-    columnId: 'todo',
+    columnId: 'new',
     content: 'Build contact us page',
   },
   {
     id: 'task8',
-    columnId: 'todo',
+    columnId: 'new',
     content: 'Create product catalog',
   },
   {
     id: 'task9',
-    columnId: 'todo',
+    columnId: 'new',
     content: 'Develop about us page',
   },
   {
     id: 'task10',
-    columnId: 'todo',
+    columnId: 'new',
     content: 'Optimize website for mobile devices',
   },
 ];

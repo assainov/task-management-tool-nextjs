@@ -1,1 +1,5 @@
-{"greeting":"Welcome to our website!","to_about":"About us"}
+{
+  "enter_app": "Enter the app",
+  "greeting": "Welcome to our website!",
+  "to_about": "About us"
+}

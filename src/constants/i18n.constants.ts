@@ -9,18 +9,22 @@ export const LocalesForSelection = [
   {
     code: SiteLocale.En,
     name: 'English',
+    flag: '🇬🇧',
   },
   {
     code: SiteLocale.Ar,
     name: 'Arabic',
+    flag: '🇸🇦',
   },
   {
     code: SiteLocale.Zh,
     name: 'Chinese',
+    flag: '🇨🇳',
   },
   {
     code: SiteLocale.Ru,
     name: 'Russian',
+    flag: '🇷🇺',
   },
 ];
 
