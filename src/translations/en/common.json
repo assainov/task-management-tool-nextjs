@@ -1,1 +1,8 @@
-{"good_wish":"Have a great day, {{userName}}!","login":"Sign in"}
+{
+  "accessibility_toggle_user": "Toggle user menu",
+  "boards": "Boards",
+  "good_wish": "Have a great day, {{userName}}!",
+  "home": "Home",
+  "login": "Sign in",
+  "logout": "Logout"
+}

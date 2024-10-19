@@ -1,1 +1,8 @@
-{"good_wish":"أتمنى لك يومًا رائعًا، {{userName}}!","login":"تسجيل الدخول"}
+{
+  "accessibility_toggle_user": "تبديل قائمة المستخدم",
+  "boards": "لوحات",
+  "good_wish": "أتمنى لك يومًا رائعًا، {{userName}}!",
+  "home": "بيت",
+  "login": "تسجيل الدخول",
+  "logout": "تسجيل الخروج"
+}

@@ -4,11 +4,11 @@ import {
 } from 'components/@common/Card';
 import KanbanBoard from 'components/@boards/KanbanBoard';
 import MainNavigation from 'components/@navigation/MainNavigation';
-import TranslationsProvider from 'services/i18n/TranslationsProvider';
 import initTranslations from 'services/i18n/initTranslations';
 import { SiteLocale } from 'constants/i18n.constants';
+import TranslationsProvider from 'services/i18n/TranslationsProvider';
 
-const translationNamespaces = ['boards'];
+const translationNamespaces = ['boards', 'common'];
 
 const DefaultBoardPage = async ({ params: { locale } }: { params: { locale: SiteLocale } }) => {
   const { t, resources } = await initTranslations(locale, translationNamespaces);

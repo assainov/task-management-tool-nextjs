@@ -1,1 +1,8 @@
-{"good_wish":"Хорошего дня, {{userName}}!","login":"Войти"}
+{
+  "accessibility_toggle_user": "Переключить меню пользователя",
+  "boards": "Доски",
+  "good_wish": "Хорошего дня, {{userName}}!",
+  "home": "Дом",
+  "login": "Войти",
+  "logout": "Выйти"
+}
