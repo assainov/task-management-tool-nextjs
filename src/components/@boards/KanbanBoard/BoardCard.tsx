@@ -9,11 +9,11 @@ import { Avatar, AvatarFallback, AvatarImage } from 'components/@common/Avatar';
 import {
   DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger,
 } from 'components/@common/DropdownMenu';
-import { ColumnId } from './KanbanBoard';
+import { TaskStatus } from '@/types/tasks.types';
 
 export interface Task {
   id: UniqueIdentifier;
-  columnId: ColumnId;
+  columnId: TaskStatus;
   content: string;
 }
 
@@ -29,7 +29,7 @@ export interface TaskDragData {
   task: Task;
 }
 
-export function TaskCard({ task, isOverlay = false }: TaskCardProps) {
+function BoardCard({ task, isOverlay = false }: TaskCardProps) {
   const {
     setNodeRef,
     attributes,
@@ -100,3 +100,5 @@ export function TaskCard({ task, isOverlay = false }: TaskCardProps) {
     </Card>
   );
 }
+
+export default BoardCard;

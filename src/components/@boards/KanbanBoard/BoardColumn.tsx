@@ -1,14 +1,14 @@
-import { SortableContext, useSortable } from '@dnd-kit/sortable';
-import { useDndContext, type UniqueIdentifier } from '@dnd-kit/core';
+import { SortableContext } from '@dnd-kit/sortable';
+import { useDroppable } from '@dnd-kit/core';
 import { useMemo } from 'react';
-import { cva } from 'class-variance-authority';
 import { Card, CardContent, CardHeader } from 'components/@common/Card';
-import { ScrollArea, ScrollBar } from 'components/@common/ScrollArea';
+import { ScrollArea } from 'components/@common/ScrollArea';
 import { useTranslation } from 'react-i18next';
-import { Task, TaskCard } from './TaskCard';
+import BoardCard, { Task } from './BoardCard';
+import { TaskStatus } from '@/types/tasks.types';
 
 export interface Column {
-  id: UniqueIdentifier;
+  id: TaskStatus;
   title: string;
 }
 
@@ -28,17 +28,12 @@ export function BoardColumn({ column, tasks }: BoardColumnProps) {
   const tasksIds = useMemo(() => tasks.map((task) => task.id), [tasks]);
   const { t } = useTranslation();
 
-  const {
-    setNodeRef,
-  } = useSortable({
+  const { setNodeRef } = useDroppable({
     id: column.id,
     data: {
       type: 'Column',
       column,
     } satisfies ColumnDragData,
-    attributes: {
-      roleDescription: `Column: ${ column.title }`,
-    },
   });
 
   return (
@@ -53,37 +48,11 @@ export function BoardColumn({ column, tasks }: BoardColumnProps) {
         <CardContent className="flex flex-grow flex-col gap-2 p-2">
           <SortableContext items={tasksIds}>
             {tasks.map((task) => (
-              <TaskCard key={task.id} task={task} />
+              <BoardCard key={task.id} task={task} />
             ))}
           </SortableContext>
         </CardContent>
       </ScrollArea>
     </Card>
-  );
-}
-
-export function BoardContainer({ children }: { children: React.ReactNode }) {
-  const dndContext = useDndContext();
-
-  const variations = cva('px-2 md:px-0 flex lg:justify-center pb-4', {
-    variants: {
-      dragging: {
-        default: 'snap-x snap-mandatory',
-        active: 'snap-none',
-      },
-    },
-  });
-
-  return (
-    <ScrollArea
-      className={variations({
-        dragging: dndContext.active ? 'active' : 'default',
-      })}
-    >
-      <div className="flex gap-4 items-center flex-row ">
-        {children}
-      </div>
-      <ScrollBar orientation="horizontal" />
-    </ScrollArea>
   );
 }
