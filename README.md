@@ -32,3 +32,11 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
 - **Code Design Patterns**: Thoughtfully structured project with tidy organization of pages, API routes, components, and services. Future plans include Clean Code architecture and DDD for server-side task logic.
 - **Testing**: Unit tests with Jest and React Testing Library. Cypress is a work in progress.
 - **CI/CD**: Foundation set for CI/CD with linter and test scripts running on every git commit and push. Future plans include incorporating these commands into a CI/CD pipeline using GitHub Actions.
+
+## Work in Progress Features
+
+- **Backend APIs**: Persist the data on the server with Next.js APIs and SQLite database.
+- **Authentication & Profile**: Add Authentication and authorization using NextAuth.
+- **Real-Time Collaboration**: For demo purposes make a notifications feature to showcase a notification when a user is assigned a task.
+- **UI Task Management**: Adding a modal to edit the task.
+- **Deployment on a Custom Docker Environment**: Following [this guide](https://nextjs.org/docs/app/building-your-application/deploying#docker-image) to finalize the integration.
