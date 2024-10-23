@@ -2,7 +2,7 @@
 
 A collaborative task management tool with Next.js to highlight the full-stack capabilities of Ilyas Assainov. The project is WIP (work in progress).
 
-- **Demo Link**: [Demo](https://task-management-tool-nextjs-la7s7z3by-assainovs-projects.vercel.app/)
+- **Demo Link**: [Demo](https://task-management-tool-nextjs.vercel.app)
 
 ## Getting Started
 
