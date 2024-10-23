@@ -1,55 +1,15 @@
 import { DragOverEvent, DragStartEvent } from '@dnd-kit/core';
 import { useState } from 'react';
 import { arrayMove } from '@dnd-kit/sortable';
+import { useAppDispatch, useAppSelector } from 'services/redux/hooks';
 import { hasDraggableData } from './utils';
-import { Task } from './BoardCard';
-import { TaskStatus } from '@/types/tasks.types';
-
-const initialTasks: Task[] = [
-  {
-    id: 'task1',
-    columnId: TaskStatus.Done,
-    content: 'Project initiation and planning',
-  },
-  {
-    id: 'task2',
-    columnId: TaskStatus.Done,
-    content: 'Gather requirements from stakeholders',
-  },
-  {
-    id: 'task5',
-    columnId: TaskStatus.InProgress,
-    content: 'Design color scheme and typography',
-  },
-  {
-    id: 'task6',
-    columnId: TaskStatus.InProgress,
-    content: 'Implement user authentication',
-  },
-  {
-    id: 'task7',
-    columnId: TaskStatus.New,
-    content: 'Build contact us page',
-  },
-  {
-    id: 'task8',
-    columnId: TaskStatus.New,
-    content: 'Create product catalog',
-  },
-  {
-    id: 'task9',
-    columnId: TaskStatus.New,
-    content: 'Develop about us page',
-  },
-  {
-    id: 'task10',
-    columnId: TaskStatus.New,
-    content: 'Optimize website for mobile devices',
-  },
-];
+import { Task, TaskStatus } from '@/types/tasks.types';
+import { selectTasks, updateTasks } from '@/features/tasks/tasksSlice';
 
 export const useKanbanEvents = () => {
-  const [tasks, setTasks] = useState<Task[]>(initialTasks);
+  const tasks = useAppSelector(selectTasks);
+  const dispatch = useAppDispatch();
+
   const [activeTask, setActiveTask] = useState<Task | null>(null);
 
   const onDragStart = (event: DragStartEvent) => {
@@ -82,39 +42,50 @@ export const useKanbanEvents = () => {
 
     if (!isActiveATask) return;
 
+    const oldTasks = JSON.parse(JSON.stringify(tasks)) as Task[];
+
     // Im dropping a Task over another Task
     if (isActiveATask && isOverATask) {
-      setTimeout(() => setTasks((tasks) => {
-        const activeIndex = tasks.findIndex((t) => t.id === activeId);
-        const overIndex = tasks.findIndex((t) => t.id === overId);
-        const activeTask = tasks[activeIndex];
-        const overTask = tasks[overIndex];
+      setTimeout(() => {
+      // ATTENTION: this is the logic we could have put in the reducer, but it's too specific to Drag&Drop
+      // So, we won't mix it with application logic, and treat it as a UI logic!
+
+        const activeIndex = oldTasks.findIndex((t) => t.id === activeId);
+        const overIndex = oldTasks.findIndex((t) => t.id === overId);
+        const activeTask = oldTasks[activeIndex];
+        const overTask = oldTasks[overIndex];
         if (
           activeTask
             && overTask
-            && activeTask.columnId !== overTask.columnId
+            && activeTask.status !== overTask.status
         ) {
-          activeTask.columnId = overTask.columnId;
-          return arrayMove(tasks, activeIndex, overIndex - 1);
+          activeTask.status = overTask.status;
+          const updatedTasks = arrayMove(oldTasks, activeIndex, overIndex - 1);
+          dispatch(updateTasks(updatedTasks));
+          return;
         }
 
-        return arrayMove(tasks, activeIndex, overIndex);
-      }), 0);
+        const updatedTasks = arrayMove(oldTasks, activeIndex, overIndex);
+        dispatch(updateTasks(updatedTasks));
+      }, 0);
     }
 
     const isOverAColumn = overData?.type === 'Column';
 
     // Im dropping a Task over a column
     if (isActiveATask && isOverAColumn) {
-      setTimeout(() => setTasks((tasks) => {
-        const activeIndex = tasks.findIndex((t) => t.id === activeId);
-        const activeTask = tasks[activeIndex];
+      setTimeout(() => {
+        const activeIndex = oldTasks.findIndex((t) => t.id === activeId);
+        const activeTask = oldTasks[activeIndex];
         if (activeTask) {
-          activeTask.columnId = overId as TaskStatus;
-          return arrayMove(tasks, activeIndex, activeIndex);
+          activeTask.status = overId as TaskStatus;
+
+          const updatedTasks = arrayMove(oldTasks, activeIndex, activeIndex);
+          dispatch(updateTasks(updatedTasks));
+          return;
         }
-        return tasks;
-      }), 0);
+        dispatch(updateTasks(oldTasks));
+      }, 0);
     }
   };
 

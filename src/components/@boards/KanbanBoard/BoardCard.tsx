@@ -1,4 +1,3 @@
-import type { UniqueIdentifier } from '@dnd-kit/core';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import { cva } from 'class-variance-authority';
@@ -9,13 +8,7 @@ import { Avatar, AvatarFallback, AvatarImage } from 'components/@common/Avatar';
 import {
   DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger,
 } from 'components/@common/DropdownMenu';
-import { TaskStatus } from '@/types/tasks.types';
-
-export interface Task {
-  id: UniqueIdentifier;
-  columnId: TaskStatus;
-  content: string;
-}
+import { Task } from '@/types/tasks.types';
 
 interface TaskCardProps {
   task: Task;
@@ -75,7 +68,7 @@ function BoardCard({ task, isOverlay = false }: TaskCardProps) {
       {...listeners}
     >
       <CardHeader className="px-3 py-3 space-between flex flex-row items-start border-secondary relative whitespace-pre-wrap">
-        {task.content}
+        {task.title}
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button

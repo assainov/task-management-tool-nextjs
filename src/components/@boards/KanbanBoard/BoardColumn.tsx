@@ -4,8 +4,8 @@ import { useMemo } from 'react';
 import { Card, CardContent, CardHeader } from 'components/@common/Card';
 import { ScrollArea } from 'components/@common/ScrollArea';
 import { useTranslation } from 'react-i18next';
-import BoardCard, { Task } from './BoardCard';
-import { TaskStatus } from '@/types/tasks.types';
+import BoardCard from './BoardCard';
+import { Task, TaskStatus } from '@/types/tasks.types';
 
 export interface Column {
   id: TaskStatus;

@@ -1,17 +1,19 @@
 import React from 'react';
 import {
-  CardContent, CardDescription, CardHeader, CardTitle,
+  CardContent,
 } from 'components/@common/Card';
 import KanbanBoard from 'components/@boards/KanbanBoard';
 import MainNavigation from 'components/@navigation/MainNavigation';
 import initTranslations from 'services/i18n/initTranslations';
 import { SiteLocale } from 'constants/i18n.constants';
 import TranslationsProvider from 'services/i18n/TranslationsProvider';
+import BoardHeader from 'components/@boards/BoardHeader';
 
 const translationNamespaces = ['boards', 'common'];
 
 const DefaultBoardPage = async ({ params: { locale } }: { params: { locale: SiteLocale } }) => {
-  const { t, resources } = await initTranslations(locale, translationNamespaces);
+  const { resources } = await initTranslations(locale, translationNamespaces);
+
   return (
     <TranslationsProvider
       namespaces={translationNamespaces}
@@ -19,12 +21,7 @@ const DefaultBoardPage = async ({ params: { locale } }: { params: { locale: Site
       resources={resources}
     >
       <MainNavigation />
-      <CardHeader>
-        <CardTitle>{t('board_name')}</CardTitle>
-        <CardDescription>
-          {t('board_description')}
-        </CardDescription>
-      </CardHeader>
+      <BoardHeader />
       <CardContent>
         <KanbanBoard />
       </CardContent>

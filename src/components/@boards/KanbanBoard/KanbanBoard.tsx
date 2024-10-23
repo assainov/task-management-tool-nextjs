@@ -11,12 +11,16 @@ import {
   TouchSensor,
   MouseSensor,
 } from '@dnd-kit/core';
+import { useAppDispatch, useAppSelector } from 'services/redux/hooks';
+import { useEffect } from 'react';
+import { Skeleton } from 'components/@common/Skeleton';
 import { BoardColumn } from './BoardColumn';
 import BoardCard from './BoardCard';
 import type { Column } from './BoardColumn';
 import { coordinateGetter } from './multipleContainersKeyboardPreset';
 import { useKanbanEvents } from './useKanbanEvents';
 import { TaskStatus } from '@/types/tasks.types';
+import { fetchAsync, selectStatus } from '@/features/tasks/tasksSlice';
 
 const columns = [
   {
@@ -34,9 +38,18 @@ const columns = [
 ] satisfies Column[];
 
 const KanbanBoard = () => {
+  const dispatch = useAppDispatch();
+  const tasksDownloadStatus = useAppSelector(selectStatus);
+
   const {
     tasks, activeTask, onDragStart, onDragEnd, onDragOver,
   } = useKanbanEvents();
+
+  useEffect(() => {
+    if (tasksDownloadStatus === 'initial') {
+      dispatch(fetchAsync());
+    }
+  }, []);
 
   const sensors = useSensors(
     useSensor(MouseSensor),
@@ -55,11 +68,16 @@ const KanbanBoard = () => {
     >
       <div className="flex gap-4 items-center flex-row">
         {columns.map((col) => (
-          <BoardColumn
-            key={col.id}
-            column={col}
-            tasks={tasks.filter((task) => task.columnId === col.id)}
-          />
+          tasksDownloadStatus === 'initial' || tasksDownloadStatus === 'loading' ? (
+            <Skeleton key={col.id} className="h-[640px] max-h-[640px] w-[350px] max-w-full rounded-sm" />
+          )
+            : (
+              <BoardColumn
+                key={col.id}
+                column={col}
+                tasks={tasks.filter((task) => task.status === col.id)}
+              />
+            )
         ))}
       </div>
       {typeof window !== 'undefined' && 'document' in window
