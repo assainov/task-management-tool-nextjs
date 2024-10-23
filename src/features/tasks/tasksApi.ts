@@ -1,7 +1,7 @@
 import { Task } from '@/types/tasks.types';
 
 export const fetchTasks = async () => {
-  const response = await fetch('http://localhost:3000/api/tasks', {
+  const response = await fetch('/api/tasks', {
     method: 'GET',
     headers: { 'Content-Type': 'application/json' },
   });
