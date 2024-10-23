@@ -1,8 +1,10 @@
 {
+  "accessibility_toggle_notifications": "切换通知",
   "accessibility_toggle_user": "切换用户菜单",
   "boards": "板",
   "good_wish": "祝您度过美好的一天， {{userName}} ！",
   "home": "家",
   "login": "登入",
-  "logout": "登出"
+  "logout": "登出",
+  "search_tasks": "搜索任务"
 }

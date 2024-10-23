@@ -1,8 +1,10 @@
 {
+  "accessibility_toggle_notifications": "تبديل الإشعارات",
   "accessibility_toggle_user": "تبديل قائمة المستخدم",
   "boards": "لوحات",
   "good_wish": "أتمنى لك يومًا رائعًا، {{userName}}!",
   "home": "بيت",
   "login": "تسجيل الدخول",
-  "logout": "تسجيل الخروج"
+  "logout": "تسجيل الخروج",
+  "search_tasks": "مهام البحث"
 }

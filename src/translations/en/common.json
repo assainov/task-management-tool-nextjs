@@ -1,8 +1,10 @@
 {
+  "accessibility_toggle_notifications": "Toggle notifications",
   "accessibility_toggle_user": "Toggle user menu",
   "boards": "Boards",
   "good_wish": "Have a great day, {{userName}}!",
   "home": "Home",
   "login": "Sign in",
-  "logout": "Logout"
+  "logout": "Logout",
+  "search_tasks": "Search tasks"
 }

@@ -1,8 +1,10 @@
 {
+  "accessibility_toggle_notifications": "Переключить уведомления",
   "accessibility_toggle_user": "Переключить меню пользователя",
   "boards": "Доски",
   "good_wish": "Хорошего дня, {{userName}}!",
   "home": "Дом",
   "login": "Войти",
-  "logout": "Выйти"
+  "logout": "Выйти",
+  "search_tasks": "Поиск задач"
 }
