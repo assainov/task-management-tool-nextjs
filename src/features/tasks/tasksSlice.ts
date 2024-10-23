@@ -14,7 +14,6 @@ const initialState: TasksSliceState = {
   status: 'initial',
 };
 
-// If you are not using async thunks you can use the standalone `createSlice`.
 export const tasksSlice = createAppSlice({
   name: 'tasks',
   // `createSlice` will infer the state type from the `initialState` argument

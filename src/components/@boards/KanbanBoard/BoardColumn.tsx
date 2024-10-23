@@ -4,27 +4,16 @@ import { useMemo } from 'react';
 import { Card, CardContent, CardHeader } from 'components/@common/Card';
 import { ScrollArea } from 'components/@common/ScrollArea';
 import { useTranslation } from 'react-i18next';
-import BoardCard from './BoardCard';
-import { Task, TaskStatus } from '@/types/tasks.types';
-
-export interface Column {
-  id: TaskStatus;
-  title: string;
-}
-
-export type ColumnType = 'Column';
-
-export interface ColumnDragData {
-  type: ColumnType;
-  column: Column;
-}
+import BoardCard from './BoardCard/BoardCard';
+import { Task } from '@/types/tasks.types';
+import { Column, ColumnDragData } from './config';
 
 interface BoardColumnProps {
   column: Column;
   tasks: Task[];
 }
 
-export function BoardColumn({ column, tasks }: BoardColumnProps) {
+const BoardColumn = ({ column, tasks }: BoardColumnProps) => {
   const tasksIds = useMemo(() => tasks.map((task) => task.id), [tasks]);
   const { t } = useTranslation();
 
@@ -55,4 +44,6 @@ export function BoardColumn({ column, tasks }: BoardColumnProps) {
       </ScrollArea>
     </Card>
   );
-}
+};
+
+export default BoardColumn;

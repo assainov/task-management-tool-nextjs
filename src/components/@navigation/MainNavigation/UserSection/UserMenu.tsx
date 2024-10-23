@@ -4,7 +4,7 @@ import { Avatar, AvatarFallback, AvatarImage } from 'components/@common/Avatar';
 import { useTranslation } from 'react-i18next';
 import {
   DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger,
-} from '../../@common/DropdownMenu';
+} from '../../../@common/DropdownMenu';
 
 const UserMenu = () => {
   const { t } = useTranslation('common');
